@@ -33,10 +33,7 @@ $fsm = [
         1 => ['next' => 2,      'action'        => 'askUsername'],
         2 => ['next' => 3,      'action'        => 'askPassword'],
         3 => ['next' => null,   'action'        => 'processLogin'],
-    ],
-    'search_user' => [
-        1 => ['next' => null,   'action'        => 'askUsersOrMnobile'],
-    ],
+    ]
 ];
 
 if (!file_exists(SESSION_FILE)) {
