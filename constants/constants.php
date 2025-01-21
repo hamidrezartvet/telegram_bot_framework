@@ -13,7 +13,6 @@ define('API_TOKEN', '');
 // Define your main server's API URL
 define('MAIN_SERVER_URL', '');
 
-
 // Define session file address. we keep user interactions in sessions
 define('SESSION_FILE', '/var/www/telegram/sessions');
 
