@@ -14,16 +14,18 @@ try {
 
     // If there's a message from the user
     if (isset($update['message']) ) {
-        $chat_id    = $update['message']['chat']['id'];
-        $text       = $update['message']['text'];
+        $chat_id        = $update['message']['chat']['id'];
+        $text           = $update['message']['text'];
    
+        //here we get session class to check if any action is started to continue or not
         $sessionManager = new SessionManager($chat_id);
         $loginManager   = new LoginManager($chat_id);
         $session        = $sessionManager->getSession();
 
-        //here we delete everything and start from first
+        //if user pressed start , we stop and reset all process
         if($text == "/start"){
 
+            //here we delete sessions and reset all going process
             $sessionManager->clearSession();
             showMainMenu($chat_id);
             exit();
@@ -31,19 +33,23 @@ try {
 
         //here we check if we have sessions
         if ($session != null) {
+
+            //if we have an ongoing work we get detail
             $action = $session['action'];
             $step   = $session['step'];
 
             //here we check if action is not login we check if user is logged in or not
             if($action != "login"){
-                //Logged in, allow main menu actions
+
                 if(!check_user_is_logged_in($chat_id)) {
-                    sendMessage($chat_id, "نشست شما منقضی شده است. لطفا ابتدا وارد حساب کاربری خود شوید.");
+
+                    sendMessage($chat_id, "your session is expired! please login.");
                     showMainMenu($chat_id);
                     exit();
                 }
             }
 
+            //here we have core of this framework. FSM make defining functions very easy.
             if (isset($fsm[$action][$step])) {
                 $currentStep = $fsm[$action][$step];
                 $nextStep = $currentStep['next'];
@@ -61,11 +67,16 @@ try {
                         $sessionManager->clearSession();
                     }
                 } else {
-                    sendMessage($chat_id, "به نظر میرسه مشکلی پیش اومده! لطفا مجدد تلاش کنید.");
+                    sendMessage($chat_id, "ops! something went wrong!");
                 }
             } else {
-                sendMessage($chat_id, "به نظر میرسه مشکلی پیش اومده! لطفا مجدد تلاش کنید.");
+                sendMessage($chat_id, "ops! something went wrong!");
             }
+        }else{
+
+            //if we do not have any sessions we request user to choose an option from menu
+            sendMessage($chat_id, "please choose an option to start!");
+            showMainMenu($chat_id);
         }
     }
 
