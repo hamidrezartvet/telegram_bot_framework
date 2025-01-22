@@ -39,7 +39,7 @@ function showMainMenu($chat_id) {
 
                 ],
                 [
-                    ['text' => 'خروج'        , 'callback_data' => 'logout']
+                    ['text' => 'logout'      , 'callback_data' => 'logout']
                 ]
             ]
         ];

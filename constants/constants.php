@@ -16,9 +16,6 @@ define('MAIN_SERVER_URL', '');
 // Define session file address. we keep user interactions in sessions
 define('SESSION_FILE', '/var/www/telegram/sessions');
 
-// Number of users per page
-$usersPerPage = 5; 
-
 // Handle incoming webhook data
 $update = json_decode(file_get_contents("php://input"), true);
 
