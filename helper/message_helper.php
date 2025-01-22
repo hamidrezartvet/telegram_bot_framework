@@ -5,7 +5,8 @@
  */
 function sendKeyboard($chat_id, $text, $keyboard) {
     $encoded_keyboard = json_encode(['inline_keyboard' => $keyboard]);
-    $url = API_URL . "sendMessage?chat_id=$chat_id&text=" . urlencode($text) . "&reply_markup=" . $encoded_keyboard;
+    $url = API_URL . "sendMessage?chat_id=$chat_id&text=" . urlencode($text) .
+     "&reply_markup=" . $encoded_keyboard;
     file_get_contents($url);
 }
 
@@ -17,7 +18,9 @@ function sendMessage($chat_id, $text) {
     file_get_contents($url);
 }
 
-
+/**
+ * Function to show menu to a user via Telegram
+ */
 function showMainMenu($chat_id) {
 
     //here we get wallet and users count value
@@ -25,37 +28,29 @@ function showMainMenu($chat_id) {
     $wallet = 0;
     $users  = 0;
     if(file_exists($session_file)){
-        $welcome_text = "لطفا یکی از گزینه های زیر را انتخاب کنید.";
+        $welcome_text = "please choose an itme to start!";
         $state  = json_decode(file_get_contents($session_file), true);
         $wallet = $state['wallet'];
-        $users  = $state['users_count'];
             
         $keyboard = [
             'inline_keyboard' => [
                 [
-                    ['text' => 'جستجو کاربر'                    , 'callback_data' => 'search_user'],
-                    ['text' => 'کاربر جدید'                     , 'callback_data' => 'create_user'],
-                ],
-                [
-                    ['text' => 'لیست کاربران'.'('.$users.')'    , 'callback_data' => 'user_mgmt'],
-                ],
-                [
-                    ['text' => 'کیف پول'.'('.$wallet.' تومان)'  , 'callback_data' => 'wallet'],
+                    ['text' => 'test button' , 'callback_data' => 'test'],
 
                 ],
                 [
-                    ['text' => 'خروج'                           , 'callback_data' => 'logout']
+                    ['text' => 'خروج'        , 'callback_data' => 'logout']
                 ]
             ]
         ];
     }else{
 
         //here we define welcome message
-        $welcome_text = "خوش آمدید! برای استفاده از ربات ابتدا باید وارد شوید. روی دکمه زیر کلیک کنید.";
+        $welcome_text = "welcome! for using bot you need to login.";
         $keyboard = [
             'inline_keyboard' => [
                 [
-                    ['text' => 'ورود'                           , 'callback_data' => 'login']
+                    ['text' => 'login'       , 'callback_data' => 'login']
                 ]
             ]
         ];

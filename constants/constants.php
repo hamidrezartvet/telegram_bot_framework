@@ -24,10 +24,6 @@ $update = json_decode(file_get_contents("php://input"), true);
 
 // Define FSM states and transitions
 $fsm = [
-    'create_user' => [
-        1 => ['next' => 2,      'action'        => 'askMobile'],
-        2 => ['next' => null,   'action'        => 'askUsers'],
-    ],
     'login' => [
         1 => ['next' => 2,      'action'        => 'askUsername'],
         2 => ['next' => 3,      'action'        => 'askPassword'],
