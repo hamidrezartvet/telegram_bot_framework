@@ -22,5 +22,5 @@ https://api.telegram.org/<REPLACE_BOT_TOKEN>/setWebhook?url=https://yourdomain.c
 *remember: if you want to sethook from Iran , start vpn then set webhook  
   
 3-define telegram bot and varibles in constants.php  
-4-in constant there is a variable by the name of "API_TOKEN". this token is suggested to use for safe communication between your bot server and another server. for example if you have one main server and a telegram bot server , for safe communication it is suggested to use token.
+4-in constant there is a variable by the name of "API_TOKEN". this token is suggested to use for safe communication between your bot server and another server. for example if you have one main server and a telegram bot server , for safe communication it is suggested to use token.  
 5-bot is ready!
