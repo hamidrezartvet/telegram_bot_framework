@@ -12,9 +12,9 @@ what does this sample app do?
 note: this bot uses FSM system for maintain functions. this method make everything easy and for new functions only you need to add new functions with tasks in the FSM array.  
   
  
-/**
+/**  
  * Guideline to run this project on server step by step:  
- */ 
+ */  
 1-download and put this project in webserver  
 2-point telegram webhook address to index.php  
 command to point from broweser:  
