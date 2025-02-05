@@ -44,4 +44,7 @@ class Config{
     const IMAGE_PATH_SAMPLE     = __DIR__ . '/../Assets/images/config.jpeg'; // Replace with the path to your image
     const IMAGE_PATH_SAVE       = __DIR__ . '/../Storage/user_images/';
     const FONT_PATH_IMAGE       = __DIR__ . '/../Assets/fonts/Raleway-Medium.ttf';
+
+    //parsianwebco sms panel
+    const sms_parsianwebco_panel_token = "";
 }
