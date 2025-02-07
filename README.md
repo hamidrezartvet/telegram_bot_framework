@@ -7,8 +7,10 @@ Features
 ✅ Supports inline commands and buttons  
 ✅ MySQL database integration  
 ✅ Secure and optimized code structure  
-✅ Extendable and modular  
-  
+✅ Date_helper class to convert date jalali to jeorjian  
+✅ Sms service for sending sms by your bot  
+✅ Image helper class for editing images  
+
 Installation  
 
 1. Clone the Repository  
